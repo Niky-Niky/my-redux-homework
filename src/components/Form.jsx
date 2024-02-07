@@ -1,3 +1,4 @@
+import { nanoid } from "@reduxjs/toolkit";
 import { useDispatch } from "react-redux"
 import { addContact } from "../redux/slice";
 
@@ -8,8 +9,13 @@ export const Form = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         
-        dispatch(addContact(e.currentTarget.elements.name.value));
+        dispatch(addContact({
+            name: e.currentTarget.elements.name.value,
+            phone: e.currentTarget.elements.tel.value,
+            id: nanoid()
+        }));
 
+        
     }
     
     return(
@@ -19,8 +25,13 @@ export const Form = () => {
                 type="text" 
                 name='name'
                 />
+                <input
+                type='text'
+                name='tel'
+                />
                 <button type="submit">Add Contact</button>
             </form>
+            
         </>
     )
 }
