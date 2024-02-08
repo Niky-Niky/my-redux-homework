@@ -1,11 +1,13 @@
 import { ContactsList } from "./ContactsList";
-import { Form } from "./Form";
+import { ContactsFilter } from "./Filter";
+import { ContactsForm } from "./Form";
 
 export const App = () => {
   return (
     <>
-    <Form/>
+    <ContactsForm/>
     <ContactsList/>
+    <ContactsFilter/>
     </>
   );
 };
