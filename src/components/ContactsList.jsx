@@ -2,30 +2,33 @@ import { useSelector } from "react-redux"
 import { nanoid } from "@reduxjs/toolkit";
 
 export const ContactsList = () => {
+    
+    //Using selectors to take data from state
+    
     const contacts = useSelector(
         state => state.contacts.contacts 
     );
     
-    const contactsName = useSelector(
-        state => state.contacts.name
-    )
     const filter = useSelector(
         state => state.contacts.filter.value 
     );
 
-    const filterContacts = () => contacts.filter((contact) => contact.name.includes(filter))
+    //Creating filter func and 'set filter to default' func
 
-    const myFilteredContacts = filterContacts();
+    const filterContacts = () => contacts.filter((contact) => contact.name.toLowerCase().includes(filter));
+
+    const handleDefaultFilter = () => (contacts.map((contact) => <li key={nanoid()}>{contact.name} - {contact.phone}</li>));
+    
+    
     return(
     <ul>
         {console.log(filterContacts())}
-        {/* {console.log(myFilterContacts.length > 0)} */}
-        {/* {console.log(filterContacts().map((contact) => {return <li key={nanoid()}>{contact}</li>}))} */}
+        {/* <button onSubmit={handleDefaultFilter}>Set no filter</button> */}
         {
-            (myFilteredContacts.length > 0) ? 
-            (myFilteredContacts.map((contact) => {return <li key={nanoid()}>{contact}</li>})) : 
-            (contacts.map((contact) => {return <li key={contact.id}>{contact.name} - {contact.phone}</li>}))
+        (filterContacts().length > 0) ? 
+        (filterContacts().map((contact) => <li key={nanoid()}>{contact.name} - {contact.phone}</li>)) : 
+        (contacts.map((contact) => <li key={nanoid()}>{contact.name} - {contact.phone}</li>))
         }
-        {console.log(contacts.map(contact => contact))}
+        
     </ul>
 )}
