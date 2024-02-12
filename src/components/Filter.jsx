@@ -18,7 +18,7 @@ export const ContactsFilter = (e) => {
         <div className="contactsFilter">
             <form action="submit" onSubmit={handleSubmit}>
                 <input type="text" name="filter" />
-                <button type="submit">Search for contacts</button>
+                <button type="submit">Apply filter</button>
             </form>
         </div>
     )

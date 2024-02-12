@@ -22,13 +22,14 @@ export const ContactsList = () => {
     
     return(
     <ul>
-        {console.log(filterContacts())}
+        {console.log(contacts.filter((contact) => contact.name.toLowerCase().includes(filter)))}
         {/* <button onSubmit={handleDefaultFilter}>Set no filter</button> */}
         {
         (filterContacts().length > 0) ? 
         (filterContacts().map((contact) => <li key={nanoid()}>{contact.name} - {contact.phone}</li>)) : 
         (contacts.map((contact) => <li key={nanoid()}>{contact.name} - {contact.phone}</li>))
         }
-        
+        {/* {console.log(filterContacts().length > 0)} */}
+        {/* {console.log(filter)} */}
     </ul>
 )}
