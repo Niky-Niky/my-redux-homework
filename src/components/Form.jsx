@@ -1,6 +1,6 @@
 import { nanoid } from "@reduxjs/toolkit";
 import { useDispatch } from "react-redux"
-import { addContact } from "../redux/slice";
+import { contactsReducers } from "../redux/slice";
 
 export const ContactsForm = () => {
     
@@ -9,7 +9,7 @@ export const ContactsForm = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         
-        dispatch(addContact(
+        dispatch(contactsReducers(
             {
             name: e.currentTarget.elements.name.value,
             phone: e.currentTarget.elements.tel.value,
